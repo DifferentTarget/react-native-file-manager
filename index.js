@@ -1,6 +1,6 @@
 
 import { NativeModules } from 'react-native';
 
-const { RNFs } = NativeModules;
+const { fs } = NativeModules;
 
-export default RNFs;
+export default fs;
