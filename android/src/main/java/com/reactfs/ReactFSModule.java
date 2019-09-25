@@ -14,4 +14,34 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     super(reactContext);
     this.reactContext = reactContext;
   }
+
+  @Override
+  public String getName() {
+    return "fs";
+  }
+
+  @ReactMethod
+  public void mkdir(String path, ReadableMap opts, Callback callback){
+
+  }
+
+  @ReactMethod
+  public void writeFile(String path, String data, ReadableMap opts, Callback callback){
+
+  }
+
+  @ReactMethod
+  public void readFile(String path, ReadableMap opts, Callback callback){
+
+  }
+
+  @ReactMethod
+  public void unlink(String path, Callback callback){
+
+  }
+
+  @ReactMethod
+  public void exist(String path, ReadableMap opts, Callback callback){
+
+  }
 }
