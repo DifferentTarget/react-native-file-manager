@@ -13,15 +13,15 @@ For a full list of available methods, see the [API Reference](docs/reference.md)
 import fs from 'react-native-filesystem';
 
 //Create a folder
-fs.mkdir('path'[, options, (err) => {}])
+fs.mkdir('path'[, options, (err) => {}]); return Promise
 //Create File
-fs.writeFile('path', data[, {options}, (err) => {}]);
+fs.writeFile('path', data[, {options}, (err) => {}]); return Promise
 //Read file
-fs.readFile('path'[, {options, (err, data) => {}}]);
+fs.readFile('path'[, {options, (err, data) => {}}]); return Promise
 //Delete File/Path
-fs.unlink('path'[, (err) => {}]);
+fs.unlink('path'[, (err) => {}]); return Promise
 //Check if file exist
-fs.exist(path[, options, (err, exist) => {}]);
+fs.exist(path[, options, (err, exist) => {}]); return Promise
 ```
 
 ### Selecting a storage class
