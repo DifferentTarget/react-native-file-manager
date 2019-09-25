@@ -22,6 +22,8 @@ fs.readFile('path'[, {options, (err, data) => {}}]); return Promise
 fs.unlink('path'[, (err) => {}]); return Promise
 //Check if file exist
 fs.exist(path[, options, (err, exist) => {}]); return Promise
+//List files in folder
+fs.list(path[options, (err, files) => {}]); return Promise
 ```
 
 ### Selecting a storage class
