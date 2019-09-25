@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.reactfs;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -13,10 +13,5 @@ public class RNFsModule extends ReactContextBaseJavaModule {
   public RNFsModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
-  }
-
-  @Override
-  public String getName() {
-    return "RNFs";
   }
 }
