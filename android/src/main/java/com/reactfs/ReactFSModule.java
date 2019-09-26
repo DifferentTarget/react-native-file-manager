@@ -43,7 +43,6 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: support more encodings
   @ReactMethod
   public void writeFile(String path, String data, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
@@ -55,9 +54,18 @@ public class RNFsModule extends ReactContextBaseJavaModule {
       String encoding = opts.hasKey("encoding")? opts.getString("encoding") : "utf-8";
       Charset characterSet = null;
       switch(encoding){
+        case "ISO8859-1":
+          characterSet = StandardCharsets.ISO_8859_1;
+          break;
+        case "ascii":
+        characterSet = StandardCharsets.US_ASCII;
+          break;
+        case "utf-16":
+        characterSet = StandardCharsets.UTF_16;
+          break;
         case "utf-8":
         default:
-        characterSet = StandardCharsets.UTF_8;
+          characterSet = StandardCharsets.UTF_8;
       }
 
       if(append){
