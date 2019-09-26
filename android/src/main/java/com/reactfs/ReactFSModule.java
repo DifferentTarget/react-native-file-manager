@@ -96,16 +96,18 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: error handle
   @ReactMethod
   public void unlink(String path, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
-    Files.delete(file);
-
-    Error err = null;
-    callback.invoke(err);
+    try {
+      Files.delete(file);
+      callback.invoke(null);
+    }
+    catch(Exception err){
+      callback.invoke(err);
+    }
   }
 
   //TODO: error handle
