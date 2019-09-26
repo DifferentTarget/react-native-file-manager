@@ -124,7 +124,8 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-
+  //TODO: mutithread walk
+  //This is a helper function for the ReactMethod list that makes walking easy
   public File[] list(File path, ReadableMap opts){
     Boolean files = opts.hasKey("files")? opts.getBoolean("files") : true;
     Boolean folders = opts.hasKey("folders")? opts.getBoolean("folders") : true;
