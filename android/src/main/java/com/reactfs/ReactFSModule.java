@@ -43,15 +43,15 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: error handle
   //TODO: support more encodings
-  //TODO: append
   @ReactMethod
   public void writeFile(String path, String data, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
     try {
+      Boolean append = opt.hasKey("append")? opts.getBoolean("append") : false;
+
       String encoding = opts.hasKey("encoding")? opts.getString("encoding") : "utf-8";
       Charset characterSet = null;
       switch(encoding){
@@ -59,7 +59,13 @@ public class RNFsModule extends ReactContextBaseJavaModule {
         default:
         characterSet = StandardCharsets.UTF_8;
       }
-      Files.write(file, data, characterSet);
+
+      if(append){
+        Files.write(file, data, StandardOpenOption.APPEND, characterSet);
+      }
+      else{
+        Files.write(file, data, characterSet);
+      }
       callback.invoke(null);
     }
     catch(Exception err){
