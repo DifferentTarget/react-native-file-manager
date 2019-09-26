@@ -44,26 +44,27 @@ public class RNFsModule extends ReactContextBaseJavaModule {
   }
 
   //TODO: error handle
-  //TODO: encoding
+  //TODO: support more encodings
   //TODO: append
   @ReactMethod
   public void writeFile(String path, String data, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
-    OutputStreamWriter output = null;
     try {
-      output = new OutputStreamWriter(new FileOutputStream(file));
-      output.write(data);
-      output.close();
-    }
-    catch(IOException err) {
-      if(output != null){
-        output.close();
+      String encoding = opts.hasKey("encoding")? opts.getString("encoding") : "utf-8";
+      Charset characterSet = null;
+      switch(encoding){
+        case "utf-8":
+        default:
+        characterSet = StandardCharsets.UTF_8;
       }
+      Files.write(file, data, characterSet);
+      callback.invoke(null);
     }
-    Error err = null;
-    callback.invoke(err);
+    catch(Exception err){
+      callback.invoke(err);
+    }
   }
 
   //TODO: error handle
