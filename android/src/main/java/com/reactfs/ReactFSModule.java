@@ -81,17 +81,19 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: error handle
   @ReactMethod
   public void readFile(String path, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
-    Scanner scanner = new Scanner(file);
-    scanner.useDelimiter("\\Z");
-
-    Error err = null;
-    callback.invoke(err, scanner.next());
+    try {
+      Scanner scanner = new Scanner(file);
+      scanner.useDelimiter("\\Z");
+      callback.invoke(null, scanner.next());
+    }
+    catch (Exception err){
+      callback.invoke(err, "");
+    }
   }
 
   //TODO: error handle
