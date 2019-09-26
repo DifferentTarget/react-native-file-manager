@@ -124,18 +124,43 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: error handle
-  //TODO: files
-  //TODO: folders
-  //TODO: walk
+
+  public File[] list(File path, ReadableMap opts){
+    Boolean files = opts.hasKey("files")? opts.getBoolean("files") : true;
+    Boolean folders = opts.hasKey("folders")? opts.getBoolean("folders") : true;
+    Boolean walk = opts.hasKey("walk")? opts.getBoolean("walk") : false;
+
+    File[] found = path.listFiles();
+
+    if(!files || !folders || walk){
+      for(int i = found.length - 1; i >= 0; i--){
+        if(found[i].isFile() && !files){
+          found.remove(i);
+        }
+        else {
+          if(walk){
+            found = ArrayUtils.addAll(found, list(found, opts));
+          }
+          if(!folders){
+            found.remove(i);
+          }
+        }
+      }
+    }
+    return found;
+  }
+
   @ReactMethod
   public void list(String path, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File folder = new File(root + "/" + path);
 
-    File[] folders = folder.listFiles();
-
-    Error err = null;
-    callback.invoke(err, folders);
+    try {
+      File[] found = list(folder, opts);
+      callback.invoke(null, found);
+    }
+    catch(Exception err){
+      callback.invoke(err, null);
+    }
   }
 }
