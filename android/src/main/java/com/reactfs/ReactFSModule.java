@@ -110,7 +110,6 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  //TODO: error handle
   @ReactMethod
   public void exist(String path, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
