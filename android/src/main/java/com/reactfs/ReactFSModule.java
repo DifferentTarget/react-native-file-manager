@@ -116,10 +116,13 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
-    Boolean exists = file.exists()
-
-    Error err = null;
-    callback.invoke(err, exists);
+    try {
+      Boolean exists = file.exists()
+      callback.invoke(null, exists);
+    }
+    catch(Exception err){
+      callback.invoke(err, false);
+    }
   }
 
   //TODO: error handle
