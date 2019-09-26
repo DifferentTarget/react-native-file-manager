@@ -21,17 +21,26 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     return "fs";
   }
 
-  //TODO: error handle
-  //TODO: recursive
   @ReactMethod
   public void mkdir(String path, ReadableMap opts, Callback callback){
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     String folder = path.substring(0, path.lastIndexOf("/"));
     File path = new File(root + "/" + folder);
 
-    path.mkdirs();
-    Error err = null;
-    callback.invoke(err);
+    Boolean recursive = opts.hasKey("recursive")? opts.getString("storage") : true;
+
+    try {
+      if(recursive){
+        path.mkdirs();
+      }
+      else{
+        path.mkdir();
+      }
+      callback.invoke(null);
+    }
+    catch(Exception err) {
+      callback.invoke(err);
+    }
   }
 
   //TODO: error handle
@@ -88,7 +97,7 @@ public class RNFsModule extends ReactContextBaseJavaModule {
     String root = baseDirForStorage(opts.hasKey("storage")? opts.getString("storage") : "important");
     File file = new File(root + "/" + path);
 
-    boolean exists = file.exists()
+    Boolean exists = file.exists()
 
     Error err = null;
     callback.invoke(err, exists);
