@@ -58,10 +58,10 @@ public class RNFsModule extends ReactContextBaseJavaModule {
           characterSet = StandardCharsets.ISO_8859_1;
           break;
         case "ascii":
-        characterSet = StandardCharsets.US_ASCII;
+          characterSet = StandardCharsets.US_ASCII;
           break;
         case "utf-16":
-        characterSet = StandardCharsets.UTF_16;
+          characterSet = StandardCharsets.UTF_16;
           break;
         case "utf-8":
         default:
