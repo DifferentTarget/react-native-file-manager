@@ -9,7 +9,7 @@ Simple file system access on iOS &amp; Android.
 
 ## Usage
 
-For a full list of available methods, see the [API Reference](docs/reference.md).
+For a full list of available methods, see the [API Reference](docs/index.md).
 
 ```javascript
 import fs from 'react-native-filesystem';
