@@ -1,4 +1,6 @@
-# react-native-filesystem
+# react-native-file-manager
+
+#### WARN: Not supported for ios for a minute
 
 Simple file system access on iOS &amp; Android.
 
