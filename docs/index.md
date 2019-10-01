@@ -1,13 +1,13 @@
 # index
 
-[exist](docs/exist.md)
+[exist](exist.md)
 
-[list](docs/list.md)
+[list](list.md)
 
-[mkdir](docs/mkdir.md)
+[mkdir](mkdir.md)
 
-[readFile](docs/readFile.md)
+[readFile](readFile.md)
 
-[unlink](docs/unlink.md)
+[unlink](unlink.md)
 
-[writeFile](docs/writeFile.md)
+[writeFile](writeFile.md)
