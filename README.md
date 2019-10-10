@@ -5,7 +5,7 @@
 Simple file system access on iOS &amp; Android.
 
 ## Setup
-> Currently there is no easy setup with npm. It will be coming in the future when this project is in a working state.
+npm i react-native-file-manager
 
 ## Usage
 
