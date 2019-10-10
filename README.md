@@ -5,7 +5,7 @@
 Simple file system access on iOS &amp; Android.
 
 ## Setup
-npm i react-native-file-manager
+> Currently there is no easy setup with npm. It will be coming in the future when this project is in a working state.
 
 ## Usage
 
@@ -26,6 +26,8 @@ fs.unlink('path'[, (err) => {}]); return Promise
 fs.exist(path[, options, (err, exist) => {}]); return Promise
 //List files in folder
 fs.list(path[options, (err, files) => {}]); return Promise
+//Get the directory a storage method gets put into
+fs.storage(storage, (err, dir) => {}); return Promise
 ```
 
 ### Selecting a storage class

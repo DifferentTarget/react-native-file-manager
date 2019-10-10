@@ -114,12 +114,36 @@ function list(path, opts, callback){
         if(err !== undefined){
           return reject(err);
         }
+        data = data.split(',');
+        data.pop();
         resolve(data);
       });
     });
   }
   else{
-    fs.list(path, opts, callback);
+    fs.list(path, opts, (err, data) => {
+      if(data !== undefined){
+        data = data.split(',');
+        data.pop();
+      }
+      callback(err, data);
+    });
+  }
+}
+
+function storage(storage, callback){
+  if(typeof callback !== 'function'){
+    return new Promise(function(resolve, reject) {
+      fs.storage(storage, (err, data) => {
+        if(err !== undefined){
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  }
+  else{
+    fs.storage(storage, callback);
   }
 }
 
@@ -130,4 +154,5 @@ export default {
   unlink: unlink,
   exist: exist,
   list: list,
+  storage: storage,
 };

@@ -11,3 +11,5 @@
 [unlink](unlink.md)
 
 [writeFile](writeFile.md)
+
+[storage](storage.md)

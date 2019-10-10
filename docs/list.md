@@ -1,4 +1,4 @@
-# exist(path, opts, callback)
+# list(path, opts, callback)
 
 ### Description
 
@@ -35,4 +35,4 @@ returns: \<Promise>
 * \<String[]> files
 > files is a array of strings that are file paths
 
-> callback is called after the check has been compleated
+> callback is called after the check has been completed
