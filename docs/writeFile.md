@@ -32,4 +32,4 @@ returns: \<Promise>
 * \<Error> err
 > This is the error that will be given to the callback or in the catch of the promise
 
-> callback is called after the file is writen to
+> callback is called after the file is written to

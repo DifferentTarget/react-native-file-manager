@@ -26,4 +26,4 @@ returns: \<Promise>
 * \<boolean> exist
 > Exist is a boolean value representing if the file exist or not
 
-> callback is called after the check has been compleated
+> callback is called after the check has been completed
