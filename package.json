@@ -19,7 +19,7 @@
   "author": "Leyla Becker",
   "license": "GNU",
   "devDependencies": {
-    "react-native": "^0.61.2"
+    "react-native": "^0.62.3"
   },
   "peerDependencies": {
     "react-native": "^0.41.2"
